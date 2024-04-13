@@ -1,6 +1,6 @@
 ﻿namespace ExemploLogin
 {
-    partial class Form1
+    partial class Login
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.txtUsuario = new System.Windows.Forms.TextBox();
@@ -37,6 +37,7 @@
             this.btAcessar = new System.Windows.Forms.Button();
             this.btMinimizar = new System.Windows.Forms.PictureBox();
             this.btFechar = new System.Windows.Forms.PictureBox();
+            this.lbErrorMessage = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btMinimizar)).BeginInit();
@@ -73,7 +74,7 @@
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(400, 27);
             this.txtUsuario.TabIndex = 1;
-            this.txtUsuario.Text = "Usuário";
+            this.txtUsuario.Text = "Username";
             this.txtUsuario.Enter += new System.EventHandler(this.txtUsuario_Enter);
             this.txtUsuario.Leave += new System.EventHandler(this.txtUsuario_Leave);
             // 
@@ -85,7 +86,7 @@
             this.txtSenha.Name = "txtSenha";
             this.txtSenha.Size = new System.Drawing.Size(400, 27);
             this.txtSenha.TabIndex = 2;
-            this.txtSenha.Text = "Senha";
+            this.txtSenha.Text = "Password";
             this.txtSenha.Enter += new System.EventHandler(this.txtSenha_Enter);
             this.txtSenha.Leave += new System.EventHandler(this.txtSenha_Leave);
             // 
@@ -107,12 +108,13 @@
             this.btAcessar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
             this.btAcessar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btAcessar.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btAcessar.Location = new System.Drawing.Point(308, 204);
+            this.btAcessar.Location = new System.Drawing.Point(308, 238);
             this.btAcessar.Name = "btAcessar";
             this.btAcessar.Size = new System.Drawing.Size(400, 40);
             this.btAcessar.TabIndex = 3;
             this.btAcessar.Text = "ACESSAR";
             this.btAcessar.UseVisualStyleBackColor = false;
+            this.btAcessar.Click += new System.EventHandler(this.btAcessar_Click);
             // 
             // btMinimizar
             // 
@@ -136,11 +138,26 @@
             this.btFechar.TabStop = false;
             this.btFechar.Click += new System.EventHandler(this.btFechar_Click);
             // 
-            // Form1
+            // lbErrorMessage
+            // 
+            this.lbErrorMessage.AutoSize = true;
+            this.lbErrorMessage.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbErrorMessage.ForeColor = System.Drawing.Color.DimGray;
+            this.lbErrorMessage.Image = ((System.Drawing.Image)(resources.GetObject("lbErrorMessage.Image")));
+            this.lbErrorMessage.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lbErrorMessage.Location = new System.Drawing.Point(308, 202);
+            this.lbErrorMessage.Name = "lbErrorMessage";
+            this.lbErrorMessage.Size = new System.Drawing.Size(103, 18);
+            this.lbErrorMessage.TabIndex = 7;
+            this.lbErrorMessage.Text = "Erro Message";
+            this.lbErrorMessage.Visible = false;
+            // 
+            // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(760, 330);
+            this.Controls.Add(this.lbErrorMessage);
             this.Controls.Add(this.btFechar);
             this.Controls.Add(this.btMinimizar);
             this.Controls.Add(this.btAcessar);
@@ -149,7 +166,7 @@
             this.Controls.Add(this.txtUsuario);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Form1";
+            this.Name = "Login";
             this.Opacity = 0.9D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
@@ -173,6 +190,7 @@
         private System.Windows.Forms.PictureBox btMinimizar;
         private System.Windows.Forms.PictureBox btFechar;
         private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.Label lbErrorMessage;
     }
 }
 

@@ -4,18 +4,22 @@ using System.Runtime.InteropServices;
 
 namespace ExemploLogin
 {
-    public partial class Form1 : Form
+    public partial class Login : Form
     {
-        public Form1()
+        private Timer errorTimer;
+        public Login()
         {
             InitializeComponent();
+            errorTimer = new Timer();
+            errorTimer.Interval = 5000; // 7 segundos
+            errorTimer.Tick += ErrorTimer_Tick;
         }
 
         #region Controle para limpar os campos quando os mesmos estiverem com foco
 
         private void txtUsuario_Enter(object sender, EventArgs e)
         {
-            if (txtUsuario.Text == "Usuário")
+            if (txtUsuario.Text == "Username")
             {
                 txtUsuario.Text = "";
             }
@@ -25,13 +29,13 @@ namespace ExemploLogin
         {
             if (txtUsuario.Text == "")
             {
-                txtUsuario.Text = "Usuário";
+                txtUsuario.Text = "Username";
             }
         }
 
         private void txtSenha_Enter(object sender, EventArgs e)
         {
-            if (txtSenha.Text == "Senha")
+            if (txtSenha.Text == "Password")
             {
                 txtSenha.Text = "";
                 txtSenha.UseSystemPasswordChar = true;
@@ -42,7 +46,7 @@ namespace ExemploLogin
         {
             if (txtSenha.Text == "")
             {
-                txtSenha.Text = "Senha";
+                txtSenha.Text = "Password";
                 txtSenha.UseSystemPasswordChar = false;
             }
         }
@@ -91,6 +95,61 @@ namespace ExemploLogin
             DragForm(sender, e);
         }
 
-        #endregion       
+        #endregion
+
+        private void btAcessar_Click(object sender, EventArgs e)
+        {
+            if (txtUsuario.Text == "Username")
+            {
+                msgError("Por favor digite o seu usuário");
+                return;
+            }
+
+            if (txtSenha.Text == "Password")
+            {
+                msgError("Por favor digite a sua senha");
+                return;
+            }
+
+            if(true)
+            {
+                var mainMenu = new FormTest();
+                mainMenu.Show();
+                mainMenu.FormClosed += Logout;
+                this.Hide();
+            }
+
+
+            // Aqui você pode adicionar a lógica para verificar a autenticação do usuário
+            msgError("Usuário ou senha incorretos, por favor tente novamente!!!");
+            txtUsuario.Clear();
+            txtSenha.Clear();
+            txtUsuario_Leave(sender, e);
+            txtSenha_Leave(sender, e);
+            txtUsuario.Focus();
+        }
+
+        private void msgError(string msg)
+        {
+            lbErrorMessage.Text = $"    {msg}";
+            lbErrorMessage.Visible = true;
+            errorTimer.Start(); // Inicia o temporizador quando exibe a mensagem de erro
+        }
+
+        private void ErrorTimer_Tick(object sender, EventArgs e)
+        {
+            lbErrorMessage.Visible = false; // Oculta a mensagem de erro após 3 segundos
+            errorTimer.Stop(); // Para o temporizador após ocultar a mensagem
+        }
+
+        private void Logout(object sender, FormClosedEventArgs e)
+        {
+            txtUsuario.Clear();
+            txtSenha.Clear();
+            txtUsuario_Leave(sender, e);
+            txtSenha_Leave(sender, e);
+            txtUsuario.Focus();
+            this.Show();
+        }
     }
 }
