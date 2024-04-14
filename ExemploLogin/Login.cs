@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using System.Collections.Generic;
 
 namespace ExemploLogin
 {
@@ -113,6 +114,9 @@ namespace ExemploLogin
 
             if(true)
             {
+                this.Hide();
+                var welcome = new FormWelcome();
+                welcome.ShowDialog();
                 var mainMenu = new FormTest();
                 mainMenu.Show();
                 mainMenu.FormClosed += Logout;
@@ -150,6 +154,28 @@ namespace ExemploLogin
             txtSenha_Leave(sender, e);
             txtUsuario.Focus();
             this.Show();
+        }
+
+        private void buttomEmail_Click(object sender, EventArgs e)
+        {
+            recoverPassword();
+        }
+
+        public string recoverPassword()
+        {
+            var userName = "David Teste Wallace";
+            var userMail = "david.mnemonic@gmail.com";
+            var accountPassword = "teste";
+            //List<string> listEmail = new List<string>();
+            //listEmail.Add(userRequesting);
+
+            var mailService = new SystemSupportMail();
+            mailService.SendMail(
+                subject: "SYSTEM: Password recovery request",
+                body: "Olá, estou testando isso aqui",
+                recipientMail: new List<string> { userMail }
+                );
+            return "SYSTEM: Password recovery request";
         }
     }
 }

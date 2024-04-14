@@ -38,6 +38,7 @@
             this.btMinimizar = new System.Windows.Forms.PictureBox();
             this.btFechar = new System.Windows.Forms.PictureBox();
             this.lbErrorMessage = new System.Windows.Forms.Label();
+            this.buttomEmail = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btMinimizar)).BeginInit();
@@ -152,11 +153,28 @@
             this.lbErrorMessage.Text = "Erro Message";
             this.lbErrorMessage.Visible = false;
             // 
+            // buttomEmail
+            // 
+            this.buttomEmail.BackColor = System.Drawing.Color.LightGray;
+            this.buttomEmail.FlatAppearance.BorderSize = 0;
+            this.buttomEmail.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.buttomEmail.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
+            this.buttomEmail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttomEmail.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttomEmail.Location = new System.Drawing.Point(308, 284);
+            this.buttomEmail.Name = "buttomEmail";
+            this.buttomEmail.Size = new System.Drawing.Size(400, 40);
+            this.buttomEmail.TabIndex = 8;
+            this.buttomEmail.Text = "EMAIL";
+            this.buttomEmail.UseVisualStyleBackColor = false;
+            this.buttomEmail.Click += new System.EventHandler(this.buttomEmail_Click);
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(760, 330);
+            this.Controls.Add(this.buttomEmail);
             this.Controls.Add(this.lbErrorMessage);
             this.Controls.Add(this.btFechar);
             this.Controls.Add(this.btMinimizar);
@@ -191,6 +209,7 @@
         private System.Windows.Forms.PictureBox btFechar;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label lbErrorMessage;
+        private System.Windows.Forms.Button buttomEmail;
     }
 }
 
